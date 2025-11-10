@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- 文字コード設定（日本語を正しく表示するため） -->
+    <meta charset="UTF-8">
+
+    <!-- モバイル対応。画面幅に合わせてレイアウトを自動調整する設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ページタイトル（ブラウザのタブに表示される） -->
+    <title>ポートフォリオ | oko</title>
+
+    <!-- サイトの説明（検索エンジンやSNSに表示される） -->
+    <meta name="description" content="大阪公立大学工業高等専門学校 知能情報コースの学生によるポートフォリオサイト。作品やスキル、経歴を紹介します。">
+
+    <!-- 検索エンジン最適化（SEO）向けのキーワード -->
+    <meta name="keywords" content="ポートフォリオ, oko, OMUCT, 高専, 知能情報, 学生, プログラミング">
+
+    <!-- 作者情報 -->
+    <meta name="author" content="oko">
+
+    <!-- CSSファイルの読み込み（main.cssに変更） -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Webフォント読み込み（高級感を出すフォント） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Favicon（ブラウザタブのアイコン）※任意 -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- ハンバーガーメニューアイコン -->
+            <ul class="menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">自己紹介</a></li>
+                <li><a href="#projects">プロジェクト</a></li>
+                <li><a href="#skills">スキル</a></li>
+                <li><a href="#contact">連絡先</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 id="main_title">okoのポートフォリオ</h1>
+
+    <!-- 自己紹介セクション -->
+    <section id="about" class="section">
+        <h2>about me</h2>
+        <p>大阪公立大学工業高等専門学校（OMUCT）の知能情報コースに通う学生です。</p>
+        <h3>career</h3>
+        <!-- 経歴の木状リスト -->
+        <ul class="timeline">
+            <li>
+                <div class="timeline-content">
+                    <h4>中学在学時</h4>
+                    <p><a href="https://www.su-gaku.net/suken/">数学検定</a>準1級1次試験合格</p>
+                </div>
+            </li>
+    </section>
+
+    <!-- プロジェクトセクション -->
+    <section id="projects" class="section">
+
+    </section>
+
+    <section id="contact" class="section">
+        <h2>contact</h2>
+        <p>個人用メールアドレス:<br>
+            <a href="mailto:toshikakimika@gmail.com">toshikakimika@gmail.com</a>
+        </p>
+
+        <p>学校用メールアドレス:<br>
+            <a href="mailto:rj23078e@st.omu.ac.jp">rj23078e@st.omu.ac.jp</a>
+        </p>
+    </section>
+
+
+    <!-- <footer>
+        <p>&copy; 2024 rayu. All Rights Reserved.</p>
+    </footer> -->
+    <script src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
