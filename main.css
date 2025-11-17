@@ -1,40 +1,116 @@
 /* ------------------------------
-   ベース設定
+    ベース設定
 ------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@600&display=swap');
+/* Google Fonts - 日本語: Noto Sans JP (標準的だが力強い印象に合う) */
+/* Google Fonts - 英語見出し: Anton (非常に太く力強い)、Bebas Neue (シャープで太い)、Alfa Slab One (よりグラフィティ感) */
+/* 今回はAntonとNoto Sans JPをベースに */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;700&display=swap');
 
-body {
-    font-family: 'Noto Sans JP', sans-serif;
-    margin: 0;
-    background-color: #0b0b0b;
-    color: #f5f5f5;
-    line-height: 1.7;
+:root {
+    /* 主要な色の定義 */
+    --primary-bg-dark: #1A1A1A; /* メインの暗い背景 */
+    --secondary-bg-dark: #2C2C2C; /* セクションの背景など、少し明るい暗色 */
+    --text-light: #F0F0F0; /* 明るいテキスト色 */
+    --accent-gold: #FFD700; /* ゴールド（強調色） */
+    --accent-red: #E74C3C; /* 濃い赤（サブ強調色、エネルギー） */
+    --border-dark: rgba(255, 255, 255, 0.1); /* 薄いボーダー */
+    --hover-effect: #4A4A4A; /* ホバー時の背景色 */
+
+    /* フォント設定 */
+    --font-jp: 'Noto Sans JP', sans-serif;
+    --font-en: 'Anton', sans-serif; /* 太く力強いフォント */
+    --font-title-weight: 700; /* 見出しの太さ */
 }
 
-/* 見出し（英語タイトル部分はPlayfair Displayでラグジュアリー感） */
+body {
+    font-family: var(--font-jp);
+    line-height: 1.8; /* 行間を広げて読みやすく */
+    color: var(--text-light);
+    background-color: var(--primary-bg-dark); /* メインの背景は濃い黒 */
+    margin: 0;
+    padding-top: 80px; /* ヘッダーの高さ分 */
+    overflow-x: hidden; /* 横スクロール防止 */
+}
+
+/* スクロールバーのスタイル（モダンブラウザ向け） */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--primary-bg-dark);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--accent-gold);
+    border-radius: 4px;
+    border: 2px solid var(--primary-bg-dark);
+}
+
+
+/* 全体のコンテナ */
+.container {
+    max-width: 1200px; /* 少し広めに */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 見出し共通 */
 h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
-    color: #d4af37; /* ゴールド */
-    letter-spacing: 1px;
+    font-family: var(--font-en); /* 英語フォントを見出しに適用 */
+    color: var(--accent-gold); /* ゴールドの見出し */
+    letter-spacing: 2px; /* 字間を少し開ける */
+    text-transform: uppercase; /* 大文字にする */
+    font-weight: var(--font-title-weight);
+    margin-bottom: 25px;
+}
+
+/* リンク共通 */
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-red); /* ホバーで赤に */
+    text-shadow: 0 0 5px rgba(255,215,0,0.5); /* 影で光る感じ */
 }
 
 /* ------------------------------
-   ナビゲーションバー
+    ヘッダー & ナビゲーションバー
 ------------------------------ */
 header {
-    background-color: rgba(15, 15, 15, 0.9);
+    background-color: rgba(0, 0, 0, 0.9); /* 半透明の黒 */
     padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* 強めの影 */
+    border-bottom: 2px solid var(--accent-gold); /* ゴールドのライン */
 }
 
-nav {
+header nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* メニューを中央に */
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.menu-icon {
+    display: none; /* デフォルトは非表示 */
+    font-size: 2.5em; /* 大きめ */
+    cursor: pointer;
+    color: var(--accent-gold);
+    transition: color 0.3s ease;
+}
+
+.menu-icon:hover {
+    color: var(--accent-red);
 }
 
 .menu {
@@ -42,143 +118,395 @@ nav {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 30px;
+    gap: 40px; /* 間隔を広めに */
 }
 
 .menu li a {
-    color: #f5f5f5;
+    color: var(--text-light);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.1em;
     position: relative;
-    transition: color 0.3s;
+    padding: 5px 0;
+    transition: color 0.3s ease;
 }
 
 .menu li a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -8px; /* 下線とテキストの距離を少し開ける */
     width: 0;
-    height: 2px;
-    background-color: #d4af37;
-    transition: width 0.3s;
+    height: 3px; /* 太めのライン */
+    background-color: var(--accent-gold);
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* なめらかなアニメーション */
 }
 
 .menu li a:hover {
-    color: #d4af37;
+    color: var(--accent-gold);
 }
 
 .menu li a:hover::after {
     width: 100%;
 }
 
-/* ハンバーガーメニュー（モバイル用） */
-.menu-icon {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: #d4af37;
-    position: absolute;
-    left: 20px;
+/* ------------------------------
+    メインタイトル
+------------------------------ */
+#main_title {
+    font-family: var(--font-en); /* 英語フォント */
+    font-size: 4.5em; /* 非常に大きく */
+    text-align: center;
+    color: var(--accent-gold); /* ゴールド */
+    margin: 120px 0 60px; /* 上下の余白 */
+    text-shadow: 0 0 20px rgba(255,215,0,0.6); /* 強めの光る影 */
+    line-height: 1.2;
+    padding: 0 10px;
 }
 
+/* ------------------------------
+    各セクション
+------------------------------ */
+.section {
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    background-color: var(--secondary-bg-dark); /* セクション背景は少し明るい暗色 */
+    border-radius: 12px; /* 少し丸みを帯びる */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6); /* 強めの影で浮き上がらせる */
+    max-width: 1000px; /* 幅を調整 */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-dark); /* 薄いボーダー */
+}
+
+.section h2 {
+    font-size: 3.2em;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px; /* 下線のためのパディング */
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 80px; /* 下線は太く短く */
+    height: 4px;
+    background-color: var(--accent-red); /* 赤い下線 */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.section h3 {
+    font-family: var(--font-jp); /* 日本語見出しは日本語フォントに戻す */
+    font-size: 1.8em;
+    color: var(--text-light); /* 白いテキスト */
+    border-bottom: 2px solid var(--border-dark);
+    padding-bottom: 12px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    letter-spacing: normal; /* h1,h2との差別化 */
+    text-transform: none; /* 大文字にしない */
+    font-weight: 700;
+}
+
+/* 自己紹介セクションの追加要素 */
+.about-intro {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.15em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-intro p {
+    margin-bottom: 15px;
+}
+
+/* Interestsタグのスタイル */
+.about-interests { /* HTML側でulにこのクラスを追加してください */
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* タグ間のスペース */
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.about-interests li {
+    background-color: var(--hover-effect); /* 暗めの背景 */
+    color: var(--accent-gold); /* ゴールドのテキスト */
+    padding: 10px 20px;
+    border-radius: 25px; /* 丸みのあるタグ */
+    font-size: 0.95em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid var(--accent-gold); /* ゴールドの枠線 */
+}
+
+.about-interests li:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-bg-dark); /* ホバーで背景ゴールド、テキスト黒 */
+}
+
+
+/* ------------------------------
+    タイムライン（経歴）
+------------------------------ */
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* 中央寄せ */
+    position: relative;
+    max-width: 800px; /* 幅を調整 */
+}
+
+.timeline::before { /* タイムラインの縦線 */
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* 中央に縦線 */
+    width: 3px;
+    background-color: var(--border-dark);
+    transform: translateX(-50%); /* 中央にぴったり */
+    border-radius: 2px;
+}
+
+.timeline li {
+    position: relative;
+    margin-bottom: 60px; /* 間隔を広めに */
+    padding: 0; /* padding-leftをリセット */
+    width: 50%; /* 各要素は半分の幅 */
+}
+
+.timeline li:nth-child(odd) { /* 奇数番目の要素は左側 */
+    left: 0;
+    text-align: right;
+    padding-right: 50px; /* 中央線との間隔 */
+}
+
+.timeline li:nth-child(even) { /* 偶数番目の要素は右側 */
+    left: 50%;
+    text-align: left;
+    padding-left: 50px; /* 中央線との間隔 */
+}
+
+.timeline li::before { /* タイムラインの丸アイコン */
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-red); /* 赤い丸 */
+    border: 4px solid var(--primary-bg-dark); /* 背景色と同じボーダーで立体感を */
+    top: 0;
+    z-index: 1;
+    transform: translate(-50%, -50%); /* 縦線と要素の境界に配置 */
+    /* 左右の要素で位置調整 */
+    left: 50%; /* 縦線の中央に合わせる */
+}
+
+.timeline li:nth-child(odd)::before {
+    left: calc(100% + 2px); /* 左側要素の右端に */
+    transform: translate(-50%, -50%); /* 中央にぴったり */
+}
+
+.timeline li:nth-child(even)::before {
+    left: -2px; /* 右側要素の左端に */
+    transform: translate(-50%, -50%); /* 中央にぴったり */
+}
+
+
+.timeline-content {
+    background-color: var(--primary-bg-dark); /* タイムラインコンテンツの背景 */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--accent-red); /* 赤い枠線 */
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px); /* ホバーで少し浮き上がる */
+    background-color: var(--hover-effect); /* 少し明るい背景に */
+}
+
+.timeline-content h4 {
+    font-family: var(--font-jp); /* 日本語フォントに戻す */
+    color: var(--accent-gold);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 700;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+/* ------------------------------
+    contact セクション
+------------------------------ */
+#contact p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+#contact a {
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+/* ------------------------------
+    footer
+------------------------------ */
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #000; /* 真っ黒 */
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 60px;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-dark);
+}
+
+/* ------------------------------
+    レスポンシブデザイン (モバイル対応)
+------------------------------ */
 @media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background-color: #111;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
+    body {
+        padding-top: 70px; /* ヘッダーの高さ調整 */
     }
 
-    .menu.show {
-        display: flex;
+    header {
+        padding: 10px 0;
+    }
+
+    header nav {
+        justify-content: space-between;
+        padding: 0 15px;
     }
 
     .menu-icon {
         display: block;
+        position: static; /* absoluteを解除 */
+        margin-right: 15px; /* メニューとの距離 */
     }
-}
 
-/* ------------------------------
-   メインタイトル
------------------------------- */
-#main_title {
-    text-align: center;
-    margin-top: 120px;
-    font-size: 2.8rem;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-}
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ヘッダーの下から */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        z-index: 999;
+        gap: 0; /* メニュー項目間のギャップをなくす */
+        padding: 10px 0;
+    }
 
-/* ------------------------------
-   セクション全体
------------------------------- */
-.section {
-    padding: 80px 10%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+    .menu.active {
+        display: flex;
+    }
 
-/* ------------------------------
-   タイムライン（経歴）
------------------------------- */
-.timeline {
-    list-style: none;
-    margin: 40px 0;
-    padding: 0;
-    position: relative;
-}
+    .menu li {
+        width: 100%; /* フル幅 */
+        text-align: center;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .menu li:last-child {
+        border-bottom: none;
+    }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    width: 2px;
-    height: 100%;
-    background-color: #d4af37;
-}
+    .menu li a {
+        display: block;
+        padding: 15px 0;
+    }
+    .menu li a::after {
+        left: 50%; /* 中央から広がる */
+        transform: translateX(-50%);
+        bottom: -5px;
+    }
 
-.timeline li {
-    margin-bottom: 40px;
-    padding-left: 50px;
-    position: relative;
-}
+    #main_title {
+        font-size: 3em;
+        margin-top: 80px;
+    }
 
-.timeline-content {
-    background-color: rgba(30, 30, 30, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-    transition: transform 0.3s;
-}
+    .section {
+        padding: 50px 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
-.timeline-content:hover {
-    transform: translateX(5px);
-}
+    .section h2 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
 
-/* ------------------------------
-   contact セクション
------------------------------- */
-#contact a {
-    color: #d4af37;
-    text-decoration: none;
-}
+    .section h2::after {
+        width: 60px;
+        height: 3px;
+        margin: 10px auto 0;
+    }
 
-#contact a:hover {
-    text-decoration: underline;
-}
+    .section h3 {
+        font-size: 1.5em;
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
 
-/* ------------------------------
-   footer
------------------------------- */
-footer {
-    text-align: center;
-    padding: 30px 0;
-    background-color: #111;
-    color: #aaa;
-    font-size: 0.9rem;
+    /* タイムライン（モバイル対応） */
+    .timeline::before {
+        left: 20px; /* 左側に寄せる */
+        transform: none;
+    }
+
+    .timeline li {
+        width: 100%; /* フル幅 */
+        left: 0;
+        text-align: left; /* 左寄せ */
+        padding-left: 50px; /* アイコン分のスペース */
+        padding-right: 0;
+    }
+
+    .timeline li:nth-child(odd) {
+        text-align: left;
+        padding-right: 0;
+    }
+
+    .timeline li:nth-child(even) {
+        left: 0; /* 右側の要素も左に寄せる */
+        text-align: left;
+    }
+
+    .timeline li::before {
+        left: 20px; /* 縦線に合わせる */
+        transform: translateX(-50%);
+    }
+
+    .timeline li:nth-child(odd)::before,
+    .timeline li:nth-child(even)::before {
+        left: 20px; /* 全てのアイコンを左側の縦線に配置 */
+        transform: translateX(-50%); /* 中央揃え */
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-content h4 {
+        font-size: 1.1em;
+    }
 }

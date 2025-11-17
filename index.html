@@ -26,9 +26,7 @@
     <!-- Webフォント読み込み（高級感を出すフォント） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Favicon（ブラウザタブのアイコン）※任意 -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">    <!-- Favicon（ブラウザタブのアイコン）※任意 -->
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
@@ -38,8 +36,8 @@
             <ul class="menu">
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#about">自己紹介</a></li>
-                <li><a href="#projects">プロジェクト</a></li>
-                <li><a href="#skills">スキル</a></li>
+                <!--li><a href="#projects">プロジェクト</a></li-->
+                <!--li><a href="#skills">スキル</a></li-->
                 <li><a href="#contact">連絡先</a></li>
             </ul>
         </nav>
@@ -50,18 +48,45 @@
     <!-- 自己紹介セクション -->
     <section id="about" class="section">
         <h2>about me</h2>
-        <p>大阪公立大学工業高等専門学校（OMUCT）の知能情報コースに通う学生です。</p>
+
+        <div class="about-intro">
+            <p>
+                はじめまして、okoと申します。<br>
+                大阪公立大学工業高等専門学校（OMUCT）の知能情報コースで、プログラミングやAI技術について学んでいます。
+            </p>
+            <p>
+                特に[ここに興味のある分野。例：Webアプリケーション開発、データ分析など]に強い関心があり、
+                学んだ知識を活かして[ここに簡単な目標。例：人の役に立つサービスを作ること]を目指しています。
+            </p>
+        </div>
+
+        <h3>Interests</h3>
+        <ul class="about-interests"> <li>[例：Web開発]</li>
+            <li>[例：機械学習]</li>
+            <li>[例：UI/UXデザイン]</li>
+            <li>[例：データサイエンス]</li>
+            <li>[例：ゲーム開発]</li>
+            <li>[例：音楽鑑賞 (HipHop, R&B)]</li> <li>[例：ストリートカルチャー]</li> <li>[例：写真・映像制作]</li>
+        </ul>
+
+
         <h3>career</h3>
-        <!-- 経歴の木状リスト -->
         <ul class="timeline">
+            <li>
+                <div class="timeline-content">
+                    <h4>[例：2023年4月]</h4>
+                    <p>大阪公立大学工業高等専門学校 知能情報コース 入学</p>
+                    <p style="margin-top: 5px;">[例：C言語、Python、アルゴリズムの基礎を学習中]</p>
+                </div>
+            </li>
             <li>
                 <div class="timeline-content">
                     <h4>中学在学時</h4>
                     <p><a href="https://www.su-gaku.net/suken/">数学検定</a>準1級1次試験合格</p>
                 </div>
             </li>
+            </ul>
     </section>
-
     <!-- プロジェクトセクション -->
     <section id="projects" class="section">
 
@@ -69,12 +94,8 @@
 
     <section id="contact" class="section">
         <h2>contact</h2>
-        <p>個人用メールアドレス:<br>
-            <a href="mailto:toshikakimika@gmail.com">toshikakimika@gmail.com</a>
-        </p>
-
         <p>学校用メールアドレス:<br>
-            <a href="mailto:rj23078e@st.omu.ac.jp">rj23078e@st.omu.ac.jp</a>
+            <a href="rj24148p@st.omu.ac.jp">rj24148p@st.omu.ac.jp</a>
         </p>
     </section>
 
