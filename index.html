@@ -36,19 +36,20 @@
             <ul class="menu">
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#about">自己紹介</a></li>
-                <!--li><a href="#projects">プロジェクト</a></li-->
+                <li><a href="#projects">プロジェクト</a></li>
                 <!--li><a href="#skills">スキル</a></li-->
                 <li><a href="#contact">連絡先</a></li>
             </ul>
         </nav>
     </header>
 
-    <h1 id="main_title">okoのポートフォリオ</h1>
+    <h1 id="main_title">portfolio</h1>
 
     <!-- 自己紹介セクション -->
-    <section id="about" class="section">
-        <h2>about me</h2>
-
+    <!-- ...existing code... -->
+<section id="about" class="section">
+    <h2>Profile</h2>
+    <div class="section-content">
         <div class="about-intro">
             <p>
                 はじめまして、okoと申します。<br>
@@ -58,37 +59,58 @@
                 特に[ここに興味のある分野。例：Webアプリケーション開発、データ分析など]に強い関心があり、
                 学んだ知識を活かして[ここに簡単な目標。例：人の役に立つサービスを作ること]を目指しています。
             </p>
-        </div>
-
-        <h3>Interests</h3>
-        <ul class="about-interests"> <li>[例：Web開発]</li>
-            <li>[例：機械学習]</li>
-            <li>[例：UI/UXデザイン]</li>
-            <li>[例：データサイエンス]</li>
-            <li>[例：ゲーム開発]</li>
-            <li>[例：音楽鑑賞 (HipHop, R&B)]</li> <li>[例：ストリートカルチャー]</li> <li>[例：写真・映像制作]</li>
-        </ul>
-
-
-        <h3>career</h3>
-        <ul class="timeline">
-            <li>
-                <div class="timeline-content">
-                    <h4>[例：2023年4月]</h4>
-                    <p>大阪公立大学工業高等専門学校 知能情報コース 入学</p>
-                    <p style="margin-top: 5px;">[例：C言語、Python、アルゴリズムの基礎を学習中]</p>
+            <!-- 役職タイムライン枠 -->
+            <div class="about-role-timeline">
+                <div class="about-role-timeline-content">
+                    <h3>2Iクラス総代</h3>
                 </div>
-            </li>
+            </div>
+        </div>
+        <ul class="timeline">
+            
             <li>
                 <div class="timeline-content">
                     <h4>中学在学時</h4>
-                    <p><a href="https://www.su-gaku.net/suken/">数学検定</a>準1級1次試験合格</p>
+                    <p>英検3級取得</p>
                 </div>
             </li>
-            </ul>
-    </section>
+            <li>
+                <div class="timeline-content">
+                    <h4>2024年4月</h4>
+                    <p>大阪公立大学高等専門学校 知能情報コース 入学</p>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-content">
+                    <h4>2025年4月</h4>
+                    <p>知能情報コースへ</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
     <!-- プロジェクトセクション -->
     <section id="projects" class="section">
+        <h2>projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-image-wrapper">
+                    <img src="images/kousensai1.png" alt="高専祭で展示した作品の画像" class="project-image">
+                </div>
+                <div class="project-info">
+                    <h3>🎨 高専祭 作品名</h3>
+                    <h4>[制作期間: 2025年4月~11月 / チーム制作]</h4>
+                    <p>
+                        作品の簡単な説明文をここに入力します。この作品は〇〇をテーマに、〇〇技術（例：Processing, Arduino, WebGLなど）を用いて制作しました。主に〇〇の部分を担当しました。
+                    </p>
+                    <a href="作品のデモURLやGitHubリポジトリ" target="_blank" class="project-link">詳細を見る →</a>
+                </div>
+            </div>
+
+            </div>
+
 
     </section>
 

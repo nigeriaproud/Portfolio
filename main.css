@@ -8,28 +8,75 @@
 
 :root {
     /* 主要な色の定義 */
-    --primary-bg-dark: #1A1A1A; /* メインの暗い背景 */
+    --primary-bg-dark: #ced1d3; /* メインの白色 */
     --secondary-bg-dark: #2C2C2C; /* セクションの背景など、少し明るい暗色 */
     --text-light: #F0F0F0; /* 明るいテキスト色 */
-    --accent-gold: #FFD700; /* ゴールド（強調色） */
+    --actual-black: #000000; 
     --accent-red: #E74C3C; /* 濃い赤（サブ強調色、エネルギー） */
     --border-dark: rgba(255, 255, 255, 0.1); /* 薄いボーダー */
     --hover-effect: #4A4A4A; /* ホバー時の背景色 */
 
     /* フォント設定 */
     --font-jp: 'Noto Sans JP', sans-serif;
-    --font-en: 'Anton', sans-serif; /* 太く力強いフォント */
+    --font-en: 'Blonde', 'Anton', 'Bebas Neue', 'Alfa Slab One', sans-serif; /* 太く力強いフォント */
     --font-title-weight: 700; /* 見出しの太さ */
 }
 
 body {
     font-family: var(--font-jp);
-    line-height: 1.8; /* 行間を広げて読みやすく */
+    line-height: 1.8;
     color: var(--text-light);
-    background-color: var(--primary-bg-dark); /* メインの背景は濃い黒 */
     margin: 0;
-    padding-top: 80px; /* ヘッダーの高さ分 */
-    overflow-x: hidden; /* 横スクロール防止 */
+    padding-top: 80px;
+    overflow-x: hidden;
+    background: #fff; /* ベースは白 */
+    position: relative;
+    /* グラデーションを複数重ねる */
+    background-image:
+        radial-gradient(circle at 20% 30%, #ffe066 0%, transparent 80%),
+        radial-gradient(circle at 80% 60%, #4fc3f7 0%, transparent 85%),
+        radial-gradient(circle at 50% 80%, #fff176 0%, transparent 85%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: gradFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes gradFloat {
+    0% {
+        background-position:
+            18% 28%,
+            78% 62%,
+            52% 78%;
+    }
+    50% {
+        background-position:
+            25% 35%,
+            85% 55%,
+            48% 85%;
+    }
+    100% {
+        background-position:
+            18% 28%,
+            78% 62%,
+            52% 78%;
+    }
+}
+
+
+@keyframes gradMove1 {
+    0% { background-position: 0% 50%, 100% 50%; }
+    100% { background-position: 100% 50%, 0% 50%; }
+}
+@keyframes gradMove2 {
+    0% { background-position: 100% 0%, 0% 100%; }
+    100% { background-position: 0% 100%, 100% 0%; }
+}
+
+@font-face {
+    font-family: 'Blonde';
+    src: url('./fonts/Blonde.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* スクロールバーのスタイル（モダンブラウザ向け） */
@@ -58,9 +105,8 @@ body::-webkit-scrollbar-thumb {
 /* 見出し共通 */
 h1, h2, h3, h4 {
     font-family: var(--font-en); /* 英語フォントを見出しに適用 */
-    color: var(--accent-gold); /* ゴールドの見出し */
+    color: black; 
     letter-spacing: 2px; /* 字間を少し開ける */
-    text-transform: uppercase; /* 大文字にする */
     font-weight: var(--font-title-weight);
     margin-bottom: 25px;
 }
@@ -145,7 +191,6 @@ header nav {
 .menu li a:hover {
     color: var(--accent-gold);
 }
-
 .menu li a:hover::after {
     width: 100%;
 }
@@ -157,27 +202,41 @@ header nav {
     font-family: var(--font-en); /* 英語フォント */
     font-size: 4.5em; /* 非常に大きく */
     text-align: center;
-    color: var(--accent-gold); /* ゴールド */
-    margin: 120px 0 60px; /* 上下の余白 */
-    text-shadow: 0 0 20px rgba(255,215,0,0.6); /* 強めの光る影 */
+    color: black; 
+    margin: 250px 0 450px; /* 上下の余白 */
+    /*text-shadow: 0 0 20px rgba(255,215,0,0.6); /* 強めの光る影 */
     line-height: 1.2;
     padding: 0 10px;
 }
+
 
 /* ------------------------------
     各セクション
 ------------------------------ */
 .section {
-    padding: 80px 20px;
+    padding: 80px 60px;
     margin-bottom: 40px;
-    background-color: var(--secondary-bg-dark); /* セクション背景は少し明るい暗色 */
+    background-color: var(--primary-bg-dark); /* セクション背景は少し明るい暗色 */
     border-radius: 12px; /* 少し丸みを帯びる */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.6); /* 強めの影で浮き上がらせる */
+    box-shadow: 0 8px 25px rgba(0,0,0,0); /* 強めの影で浮き上がらせる */
     max-width: 1000px; /* 幅を調整 */
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid var(--border-dark); /* 薄いボーダー */
+    border: 0px solid var(--border-dark); /* 薄いボーダー */
 }
+
+#about .section-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.about-intro {
+    flex: 1 1 300px;
+    min-width: 250px;
+}
+
 
 .section h2 {
     font-size: 3.2em;
@@ -189,7 +248,7 @@ header nav {
 
 .section h2::after {
     content: '';
-    display: block;
+    display: none;
     width: 80px; /* 下線は太く短く */
     height: 4px;
     background-color: var(--accent-red); /* 赤い下線 */
@@ -210,17 +269,22 @@ header nav {
     font-weight: 700;
 }
 
+#about.section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+
 /* 自己紹介セクションの追加要素 */
 .about-intro {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 1.15em;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    flex: 1 1 300px;
+    min-width: 250px;
 }
 
 .about-intro p {
+    color: black;
     margin-bottom: 15px;
 }
 
@@ -251,47 +315,51 @@ header nav {
     color: var(--primary-bg-dark); /* ホバーで背景ゴールド、テキスト黒 */
 }
 
+#about h2 {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 
 /* ------------------------------
     タイムライン（経歴）
 ------------------------------ */
 .timeline {
-    list-style: none;
+    flex: 1 1 250px;
+    min-width: 200px;
+    margin: 0;
     padding: 0;
-    margin: 0 auto; /* 中央寄せ */
+    list-style: none;
     position: relative;
-    max-width: 800px; /* 幅を調整 */
 }
+
+
 
 .timeline::before { /* タイムラインの縦線 */
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 50%; /* 中央に縦線 */
+    left: 20px; /* 中央に縦線 */
+    color: var(--actual-black);
     width: 3px;
-    background-color: var(--border-dark);
-    transform: translateX(-50%); /* 中央にぴったり */
+    background-color: var(--actual-black);
+    transform: translateX(-50%);
     border-radius: 2px;
 }
 
+@keyframes timelineLineMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+}
+
 .timeline li {
+    list-style: none;
+    margin-bottom: 24px;
     position: relative;
-    margin-bottom: 60px; /* 間隔を広めに */
-    padding: 0; /* padding-leftをリセット */
-    width: 50%; /* 各要素は半分の幅 */
-}
-
-.timeline li:nth-child(odd) { /* 奇数番目の要素は左側 */
-    left: 0;
-    text-align: right;
-    padding-right: 50px; /* 中央線との間隔 */
-}
-
-.timeline li:nth-child(even) { /* 偶数番目の要素は右側 */
-    left: 50%;
-    text-align: left;
-    padding-left: 50px; /* 中央線との間隔 */
 }
 
 .timeline li::before { /* タイムラインの丸アイコン */
@@ -300,43 +368,54 @@ header nav {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: var(--accent-red); /* 赤い丸 */
-    border: 4px solid var(--primary-bg-dark); /* 背景色と同じボーダーで立体感を */
+    background: linear-gradient(135deg, #4fc3f7 0%, #a8e063 100%);
+    background-size: 200% 200%;
+    animation: timelineDotMove 2.5s ease-in-out infinite alternate;
+    border: 4px solid var(--primary-bg-dark);
     top: 0;
     z-index: 1;
-    transform: translate(-50%, -50%); /* 縦線と要素の境界に配置 */
-    /* 左右の要素で位置調整 */
-    left: 50%; /* 縦線の中央に合わせる */
+    transform: translate(-50%, -50%);
+    left: 20px;
 }
 
-.timeline li:nth-child(odd)::before {
-    left: calc(100% + 2px); /* 左側要素の右端に */
-    transform: translate(-50%, -50%); /* 中央にぴったり */
+@keyframes timelineDotMove {
+    0% { background-position: 100% 0%; }
+    100% { background-position: 0% 100%; }
 }
-
-.timeline li:nth-child(even)::before {
-    left: -2px; /* 右側要素の左端に */
-    transform: translate(-50%, -50%); /* 中央にぴったり */
-}
-
 
 .timeline-content {
-    background-color: var(--primary-bg-dark); /* タイムラインコンテンツの背景 */
-    padding: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    background: linear-gradient(120deg, #fff 0%, #ffe066 60%, #4fc3f7 100%);
+    background-size: 200% 200%;
+    animation: timelineContentGradMove 6s ease-in-out infinite alternate;
+    margin-left: 50px;
+    padding: 25px 25px 25px 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border: 1px solid var(--accent-red); /* 赤い枠線 */
+    transition: 
+        transform 0.3s ease, 
+        background 0.6s, 
+        background-color 0.3s ease;
+    border: 1px solid var(--accent-red);
 }
 
+@keyframes timelineContentGradMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.timeline-meta:hover,
 .timeline-content:hover {
     transform: translateY(-5px); /* ホバーで少し浮き上がる */
     background-color: var(--hover-effect); /* 少し明るい背景に */
 }
 
+.timeline-meta h4,
 .timeline-content h4 {
     font-family: var(--font-jp); /* 日本語フォントに戻す */
-    color: var(--accent-gold);
+    color: var(--actual-black);
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 1.3em;
@@ -344,11 +423,197 @@ header nav {
     text-transform: none;
     font-weight: 700;
 }
-
+.timeline-meta p,
 .timeline-content p {
     margin: 0;
-    color: var(--text-light);
+    color: var(--actual-black);
     font-size: 0.95em;
+}
+
+.about-role-timeline {
+    margin-top: 30px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.about-role-timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-red);
+    border: 4px solid var(--primary-bg-dark);
+    margin-top: 10px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+
+.about-role-timeline-content {
+    background: linear-gradient(120deg, #222 0%, #2c2c2c 50%, #444 100%);
+    background-size: 200% 200%; /* 少し控えめに */
+    border: 1px solid var(--accent-red);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    padding: 18px 24px;
+    color: #fff;
+    font-size: 1.6em;
+    font-family: var(--font-jp);
+    font-weight: 700;
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    transition: 
+        background 0.6s,
+        box-shadow 0.3s,
+        border-color 0.3s,
+        color 0.3s;
+    animation: bgMove 2s linear infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.about-role-timeline-content:hover {
+    background: linear-gradient(120deg, #333 0%, #222 100%);
+    box-shadow: 0 8px 24px rgba(255,0,0,0.2);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.about-role {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.about-role-timeline-content h3 {
+    color: var(--accent-gold);
+    font-size: 1.0em;
+    font-family: var(--font-jp);
+    font-weight: 700;
+    margin: 0;
+}
+
+
+
+/* ------------------------------
+    project セクション
+------------------------------*/
+
+/* ------------------------------
+    プロジェクトセクション
+------------------------------ */
+
+/* プロジェクト全体を包むコンテナ（カードの配置を制御） */
+.projects-container {
+    display: flex;
+    flex-direction: column; /* 基本は縦に並べる */
+    gap: 60px; /* カード間の間隔 */
+    padding-top: 20px;
+}
+
+/* 個々のプロジェクトカード */
+.project-card {
+    display: flex; /* 画像と情報を横に並べる */
+    background-color: var(--secondary-bg-dark); /* 背景色を少し明るく */
+    border-radius: 15px;
+    padding: 25px;
+    overflow: hidden; /* 角丸に合わせて内容を切り取る */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-dark);
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* ホバーで浮き上がるエフェクト */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* 画像ラッパー */
+.project-image-wrapper {
+    width: 40%; /* 画像に40%の幅 */
+    min-height: 250px;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像をボックスに合わせてトリミング */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05); /* ホバーで画像を少し拡大 */
+}
+
+/* 情報エリア */
+.project-info {
+    width: 60%; /* 情報に60%の幅 */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-info h3 {
+    color: var(--accent-gold);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    font-family: var(--font-jp);
+}
+
+.project-info h4 {
+    color: var(--text-light);
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.project-info p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* 詳細リンクボタン */
+.project-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05em;
+    align-self: flex-start; /* 左寄せにする */
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #FF6961; /* ホバーで明るい赤に */
+}
+
+/* ------------------------------
+    レスポンシブ対応（モバイル表示）
+------------------------------ */
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column; /* 縦並びにする */
+    }
+
+    .project-image-wrapper {
+        width: 100%; /* フル幅 */
+        height: 200px;
+    }
+
+    .project-info {
+        width: 100%; /* フル幅 */
+        padding: 20px;
+    }
+    
+    .project-info h3 {
+        font-size: 1.5em;
+    }
 }
 
 /* ------------------------------
@@ -356,6 +621,7 @@ header nav {
 ------------------------------ */
 #contact p {
     text-align: center;
+    color: var(--actual-black);
     font-size: 1.1em;
     margin-bottom: 20px;
 }
