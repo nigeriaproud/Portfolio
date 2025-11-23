@@ -38,13 +38,13 @@
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#about">自己紹介</a></li>
                 <li><a href="#projects">プロジェクト</a></li>
-                <!--li><a href="#skills">スキル</a></li-->
+                <li><a href="#skills">スキル</a></li>
                 <li><a href="#contact">連絡先</a></li>
             </ul>
         </nav>
     </header>
 
-    <h1 id="main_title">portfolio</h1>
+    <h1 id="home" class="main_title">portfolio</h1>
 
     <!-- 自己紹介セクション -->
     <!-- ...existing code... -->
@@ -94,7 +94,7 @@
     <h2>projects</h2>
     <div class="projects-container">
         
-        <div class="project-card featured">
+        <div class="project-card">
             <div class="project-image-wrapper">
                 <a href="https://play.unity.com/en/games/d09a9ecb-6349-40d4-a426-cbcb8b22d6b3/mamo" target="_blank" class="image-link">
                     <img src="images/kousensai-title.png" alt="高専祭で展示した作品の画像" class="project-image">
@@ -109,6 +109,55 @@
                 </p>
                 <p target="_blank" class="project-link">← Unity Playで遊ぶ</a>
             </div>
+        </div>
+        <div class="project-card">
+            <div class="project-image-wrapper">
+                <a href="https://colab.research.google.com/drive/1TpVqFKgls3s0rZLVJCvyglMLjFBpwx4z" target="_blank" class="image-link">
+                    <img src="images/hitandbrow.png" alt="課題で作成した作品" class="project-image">
+                    <div class="play-overlay"><ion-icon name="game-controller"></ion-icon></div>
+                </a>
+            </div>
+            <div class="project-info">
+                <h3>ヒットアンドブロウ</h3>
+                <h4>[制作期間: 約10時間 / 個人制作</h4>
+                <p>
+                    2025年の前期の課題のため作成した、数当てゲームです。Pythonの基礎を学ぶためにGoogle Colaboratory上で動作する形で制作しました。プレイヤーは4桁の数字を予想し、コンピュータが選んだ数字と比較して、ヒット（正しい数字が正しい位置にある）とブロウ（正しい数字が間違った位置にある）の数をフィードバックとして受け取ります。
+                </p>
+                <p target="_blank" class="project-link">← ブラウザ上で遊ぶ</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2>skills</h2>
+    <div class="skills-grid">
+        <div class="skill-item">
+            <img src="images/python-original.svg" alt="Pythonロゴ" class="skill-icon">
+            <h3>Python</h3>
+            <p>学校での授業で使用</p>
+        </div>
+        <div class="skill-item">
+            <img src="images/vscode-original.svg" alt="Visual Studio Codeロゴ" class="skill-icon">
+            <h3>Visual Studio Code</h3>
+            <p>学校での授業で使用</p>
+        </div>
+        <div class="skill-item">
+            <img src="images/unity-original.svg" alt="Unityロゴ" class="skill-icon">
+            <img src="images/csharp-original.svg" alt="C#ロゴ" class="skill-icon">
+            <h3>Unity/c#</h3>
+            <p>高専祭で2Dサッカーゲームを作成したときに使用。</p>
+        </div>
+        <div class="skill-item">
+            <img src="images/github-original.svg" alt="GitHubロゴ" class="skill-icon">
+            <h3>GitHub</h3>
+            <p>チーム制作でのバージョン管理に使用。</p>
+        </div>
+        <div class="skill-item">
+            <img src="images/html5-original.svg" alt="HTML5ロゴ" class="skill-icon">
+            <img src="images/css3-original.svg" alt="CSSS3ロゴ" class="skill-icon">
+            <h3>HTML/CSS</h3>
+            <p>このポートフォリオサイトの作成に使用。</p>
         </div>
     </div>
 </section>
