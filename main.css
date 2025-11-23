@@ -577,17 +577,21 @@ header nav {
 /* プロジェクト全体を包むコンテナ（カードの配置を制御） */
 .projects-container {
     display: flex;
-    flex-direction: column; /* 基本は縦に並べる */
-    gap: 60px; /* カード間の間隔 */
+    flex-wrap: wrap;
+    justify-content: space-between; /* 1列のみのグリッドを作成（縦並びを実現） */
+    gap: 40px; /* カード間の間隔 */
     padding-top: 20px;
 }
 
 /* 個々のプロジェクトカード */
 .project-card {
-    display: flex; /* 画像と情報を横に並べる */
+    display: grid;
     background-color: var(--secondary-bg-dark); /* 背景色を少し明るく */
+    grid-template-columns: 4fr 6fr;
+    margin-bottom: 20px;
     border-radius: 15px;
     padding: 25px;
+    column-gap: 30px;
     overflow: hidden; /* 角丸に合わせて内容を切り取る */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
@@ -601,9 +605,8 @@ header nav {
 
 /* 画像ラッパー */
 .project-image-wrapper {
-    width: 40%; /* 画像に40%の幅 */
     min-height: 250px;
-    overflow: hidden;
+    height: 100%;
 }
 
 .project-image {
@@ -611,6 +614,7 @@ header nav {
     height: 100%;
     object-fit: cover; /* 画像をボックスに合わせてトリミング */
     display: block;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     transition: transform 0.5s ease;
 }
 
@@ -618,9 +622,84 @@ header nav {
     transform: scale(1.05); /* ホバーで画像を少し拡大 */
 }
 
+.project-card.featured2 {
+    /* 必要に応じてカード全体の最大幅を広げる */
+    grid-template-columns: 6fr 4fr; 
+}
+
+
+/* 特別な「featured」カードの設定 */
+.project-card.featured {
+    /* 必要に応じてカード全体の最大幅を広げる */
+    grid-template-columns: 6fr 4fr; 
+}
+
+/* 画像エリアを広く、高くする */
+.project-card.featured .project-image-wrapper {
+    min-height: 400px; /* 元は250px。高さを出して迫力を出す */
+    position: relative; /* オーバーレイ表示用 */
+}
+
+/* テキストエリアは少し狭くする */
+
+
+/* 画像リンクの設定 */
+.image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative; /* オーバーレイ配置用 */
+}
+
+/* ------------------------------
+    ホバー時の「PLAY」アイコン演出（任意）
+------------------------------ */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* 少し暗くする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 最初は隠す */
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.play-overlay ion-icon {
+    font-size: 3em;
+    color: var(--actual-black); /* 金色のアイコン */
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+/* ホバー時にオーバーレイを表示 */
+.image-link:hover .play-overlay {
+    opacity: 1;
+}
+
+/* -------------------------------------------
+    ★ URLに飛ばない画像のみのカード（.image-only）の設定
+------------------------------------------- */
+
+/* 画像クリック不可の場合のカーソル設定 */
+.project-card.image-only .project-image-wrapper {
+    cursor: default; /* クリックできないことを示す */
+}
+
+/* image-only の場合はオーバーレイを完全に非表示 */
+.project-card.image-only .play-overlay {
+    display: none;
+}
+
+project-image-wrapper
+
+
 /* 情報エリア */
 .project-info {
-    width: 60%; /* 情報に60%の幅 */
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -628,7 +707,7 @@ header nav {
 }
 
 .project-info h3 {
-    color: var(--accent-gold);
+    color: var(--actual-black);
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 1.8em;
@@ -636,21 +715,21 @@ header nav {
 }
 
 .project-info h4 {
-    color: var(--text-light);
+    color: var(--actual-black);
     font-size: 0.9em;
     font-weight: 400;
     margin-bottom: 20px;
 }
 
 .project-info p {
-    color: var(--text-light);
+    color: var(--actual-black);
     margin-bottom: 25px;
     line-height: 1.6;
 }
 
 /* 詳細リンクボタン */
 .project-link {
-    color: var(--accent-red);
+    color: var(--actual-black);
     text-decoration: none;
     font-weight: 700;
     font-size: 1.05em;
