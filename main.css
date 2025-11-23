@@ -118,6 +118,7 @@ a {
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
+
 a:hover {
     color: var(--accent-red); /* ホバーで赤に */
     text-shadow: 0 0 5px rgba(255,215,0,0.5); /* 影で光る感じ */
@@ -212,7 +213,7 @@ header nav {
 /* ------------------------------
     メインタイトル
 ------------------------------ */
-#main_title {
+.main_title {
     font-family: var(--font-en); /* 英語フォント */
     font-size: 4.5em; /* 非常に大きく */
     text-align: center;
@@ -273,7 +274,7 @@ header nav {
 .section h3 {
     font-family: var(--font-jp); /* 日本語見出しは日本語フォントに戻す */
     font-size: 1.8em;
-    color: var(--text-light); /* 白いテキスト */
+    color: var(--actual-black); /* 白いテキスト */
     border-bottom: 2px solid var(--border-dark);
     padding-bottom: 12px;
     margin-top: 50px;
@@ -739,6 +740,45 @@ project-image-wrapper
 
 .project-link:hover {
     color: #FF6961; /* ホバーで明るい赤に */
+}
+
+/* ------------------------------
+    スキルセクション
+------------------------------ */
+
+.skill-item p {
+    color: black;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+
+.skill-icon {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+
+.skill-item h3 {
+    margin-top: 5px; /* 上部のマージンを小さく */
+    margin-bottom: 5px; /* 下部のマージンを小さく */
+    padding-bottom: 0; /* 下線も不要な場合は padding-bottom: 0; */
+    border-bottom: none; /* 下線も不要な場合は border-bottom: none; */
+    font-size: 1.2em; /* サイズもスキルカードに合わせて小さく調整（任意） */
+}
+
+.skill-item {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 /* ------------------------------
